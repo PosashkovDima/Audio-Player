@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" 
     android:orientation="vertical" >
 
     <TextView
@@ -14,7 +14,7 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/trackStatus"
+        android:id="@+id/statusLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/trackName"
@@ -32,5 +32,26 @@
         android:onClick="actionButtonOnClick"
         android:text="@string/butPlay"
         android:width="200dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/trackName"
+        android:layout_marginBottom="26dp"
+        android:layout_marginRight="22dp"
+        android:onClick="volumeLower"
+        android:text="Button" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="volumeHigher"
+        android:text="Button" />
 
 </RelativeLayout>

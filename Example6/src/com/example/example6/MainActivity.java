@@ -1,6 +1,7 @@
 package com.example.example6;
 
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -14,7 +15,10 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-	private static boolean IS_PLAY = false;
+	private static boolean isPlay = false;
+	private MediaPlayer mPlayer;
+	private int currPosition;
+	private float currVolume = 1.0f;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +30,41 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		} else {
-			changeStatus();
+			setTrackStatus();
 		}
 	}
 
 	/**
-	 * Changes the status in accordance with field IS_PLAY.
+	 * Start playing the track.
 	 */
-	private void changeStatus() {
+	private void playTrack() {
+
+		mPlayer = MediaPlayer.create(getApplicationContext(), R.raw.song);
+		mPlayer.start();
+		if (currPosition != 0) {
+			mPlayer.seekTo(currPosition);
+		}
+		isPlay = true;
+	}
+
+	/**
+	 * Track put on pause.
+	 */
+	private void pauseTrack() {
+		if (mPlayer != null) {
+			mPlayer.pause();
+			currPosition = mPlayer.getCurrentPosition();
+			isPlay = false;
+		}
+	}
+
+	/**
+	 * Set status to action button and status label.
+	 */
+	private void setTrackStatus() {
 		Button actionbutton = (Button) findViewById(R.id.actionButton);
-		TextView trackStatus = (TextView) findViewById(R.id.trackStatus);
-		if (IS_PLAY) {
+		TextView trackStatus = (TextView) findViewById(R.id.statusLabel);
+		if (!isPlay) {
 			trackStatus.setText("Status: Playing");
 			actionbutton.setText("Pause");
 		} else {
@@ -46,13 +74,43 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	/**
-	 * Changes boolean field IS_PLAY.
+	 * Each call to lowers the volume to 10%
+	 * 
+	 * @param v
+	 */
+	public void volumeLower(View v) {
+		if (currVolume != 0.0f) {
+			currVolume -= 0.1f;
+		}
+		mPlayer.setVolume(--currVolume, currVolume);
+
+	}
+
+	/**
+	 * Each call to higher the volume to 10%
+	 * 
+	 * @param v
+	 */
+	public void volumeHigher(View v) {
+		if (currVolume != 1.0f) {
+			currVolume += 0.1f;
+		}
+		mPlayer.setVolume(currVolume, currVolume);
+	}
+
+	/**
+	 * Called if click action button. Calls setTrackStatus() and play or pause
+	 * track.
 	 * 
 	 * @param v
 	 */
 	public void actionButtonOnClick(View v) {
-		IS_PLAY = !IS_PLAY;
-		changeStatus();
+		setTrackStatus();
+		if (!isPlay) {
+			playTrack();
+		} else {
+			pauseTrack();
+		}
 	}
 
 	@Override
