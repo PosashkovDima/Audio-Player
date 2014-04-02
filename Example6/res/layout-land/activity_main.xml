@@ -3,12 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <TextView
         android:id="@+id/trackName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="80dp"
         android:text="@string/trackNameDefault"
         android:textSize="30sp" />
 
@@ -16,10 +17,20 @@
         android:id="@+id/trackStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/trackName"
         android:layout_alignLeft="@id/trackName"
+        android:layout_below="@id/trackName"
         android:text="@string/trackStatusIdle"
         android:textSize="20sp" />
-    
+
+    <Button
+        android:id="@+id/actionButtomOnClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="80dp"
+        android:onClick="actionButtomClick"
+        android:text="@string/butPlay"
+        android:width="200dp" />
 
 </RelativeLayout>
