@@ -1,5 +1,6 @@
 package com.example.example6;
 
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -8,22 +9,50 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
+
+	private static boolean IS_PLAY = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+		} else {
+			changeStatus();
 		}
 	}
 
-	public void actionButtomOnClick(View v) {
-		
+	/**
+	 * Changes the status in accordance with field IS_PLAY.
+	 */
+	private void changeStatus() {
+		Button actionbutton = (Button) findViewById(R.id.actionButton);
+		TextView trackStatus = (TextView) findViewById(R.id.trackStatus);
+		if (IS_PLAY) {
+			trackStatus.setText("Status: Playing");
+			actionbutton.setText("Pause");
+		} else {
+			trackStatus.setText("Status: Paused");
+			actionbutton.setText("Play");
+		}
+	}
+
+	/**
+	 * Changes boolean field IS_PLAY.
+	 * 
+	 * @param v
+	 */
+	public void actionButtonOnClick(View v) {
+		IS_PLAY = !IS_PLAY;
+		changeStatus();
 	}
 
 	@Override

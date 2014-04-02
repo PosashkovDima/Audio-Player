@@ -25,14 +25,14 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/actionButtomOnClick"
+        android:id="@+id/actionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:width="200dp"
-        android:onClick="actionButtomClick"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="@string/butPlay" />
+        android:onClick="actionButtonOnClick"
+        android:text="@string/butPlay"
+        android:width="200dp" />
 
 </RelativeLayout>

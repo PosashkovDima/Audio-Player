@@ -23,13 +23,13 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/actionButtomOnClick"
+        android:id="@+id/actionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
         android:layout_marginTop="80dp"
-        android:onClick="actionButtomClick"
+        android:onClick="actionButtonOnClick"
         android:text="@string/butPlay"
         android:width="200dp" />
 
