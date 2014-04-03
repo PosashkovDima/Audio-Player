@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends ActionBarActivity {
+public class AudioPlayerActivity extends ActionBarActivity {
 
 	private static boolean isPlay = false;
 	private MediaPlayer mPlayer;
