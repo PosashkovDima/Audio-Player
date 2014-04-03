@@ -42,7 +42,7 @@
         android:layout_marginBottom="26dp"
         android:layout_marginRight="22dp"
         android:onClick="volumeLower"
-        android:text="Button" />
+        android:text="low" />
 
     <Button
         android:id="@+id/button2"
@@ -52,6 +52,6 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_toRightOf="@+id/button1"
         android:onClick="volumeHigher"
-        android:text="Button" />
+        android:text="hig" />
 
 </RelativeLayout>
