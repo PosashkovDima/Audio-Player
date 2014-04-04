@@ -7,18 +7,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class AudioPlayer extends Activity {
- 
+
 	private MediaPlayer mPlayer;
 	private int currPosition;
 	private float currVolume = 1.0f;
-	private static AudioPlayer sharedVolumeControl = null;
+	private static AudioPlayer sharedAudioPlayer = null;
 
 	public static synchronized AudioPlayer sharedAudioPlayer() {
-		if (sharedVolumeControl == null) {
-			sharedVolumeControl = new AudioPlayer();
+		if (sharedAudioPlayer == null) {
+			sharedAudioPlayer = new AudioPlayer();
 		}
 
-		return sharedVolumeControl;
+		return sharedAudioPlayer;
 	}
 
 	public boolean isPlaying() {
