@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
+    android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TextView
@@ -34,24 +34,21 @@
         android:width="200dp" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/increase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/trackName"
-        android:layout_marginBottom="26dp"
-        android:layout_marginRight="22dp"
-        android:onClick="volumeLower"
-        android:text="low" />
+        android:layout_alignRight="@+id/actionButton"
+        android:layout_below="@+id/statusLabel"
+        android:onClick="increaseButtonOnClick"
+        android:text="@string/increaseButton" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/decrease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_toRightOf="@+id/button1"
-        android:onClick="volumeHigher"
-        android:text="hig" />
+        android:layout_alignLeft="@+id/actionButton"
+        android:layout_below="@+id/statusLabel"
+        android:onClick="decreaseButtonOnClick"
+        android:text="@string/decreaseButton" />
 
 </RelativeLayout>
