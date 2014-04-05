@@ -13,36 +13,55 @@ public class AudioPlayerActivity extends Activity {
 	private Button actionButton;
 	private TextView trackStatus;
 
+	private boolean wasPaused = false;
 	private static final String CURRENT_POSITION_KEY = "currentPositionKey";
 	private static final String WAS_PLAYING_KEY = "wasPlayingKey";
+	private static final String WAS_PAUSED_KEY = "wasPausedKey";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		setVolumeControlStream(AudioManager.STREAM_MUSIC);
+
 		player = new AudioPlayer(MediaPlayer.create(getApplicationContext(),
 				R.raw.song));
+		
+		savedInstanceStateAnalyzes(savedInstanceState);
 
+	}
+
+	/**
+	 * Analyzes the restored state and change status to playing\paused\idle.
+	 * 
+	 * @param savedInstanceState
+	 *            type of Bundle
+	 */
+	private void savedInstanceStateAnalyzes(Bundle savedInstanceState) {
 		if (savedInstanceState != null) {
 			player.setTimePassed(savedInstanceState
 					.getInt(CURRENT_POSITION_KEY));
 			if (savedInstanceState.getBoolean(WAS_PLAYING_KEY)) {
 				player.playTrack();
 				setStatusPlaying();
+			} else if (savedInstanceState.getBoolean(WAS_PAUSED_KEY)) {
+				setStatusPaused();
 			} else {
-				// setStatusPaused();
+				setStatudIdle();
 			}
 		}
 	}
-	
+
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
 		savedInstanceState.putInt(CURRENT_POSITION_KEY, player.getTimePassed());
 		savedInstanceState.putBoolean(WAS_PLAYING_KEY, player.isPlaying());
+		savedInstanceState.putBoolean(WAS_PAUSED_KEY, wasPaused);
 		super.onSaveInstanceState(savedInstanceState);
 	}
-//onAudioFocusedChangedListener
+
+	// onAudioFocusedChangedListener
 	@Override
 	protected void onDestroy() {
 		player.stopTrack();
@@ -59,6 +78,7 @@ public class AudioPlayerActivity extends Activity {
 		if (!player.isPlaying()) {
 			player.playTrack();
 			setStatusPlaying();
+			wasPaused = true;
 		} else {
 			player.pauseTrack();
 			setStatusPaused();
@@ -83,5 +103,15 @@ public class AudioPlayerActivity extends Activity {
 		trackStatus = (TextView) findViewById(R.id.statusLabel);
 		trackStatus.setText("Status: Playing");
 		actionButton.setText("Pause");
+	}
+
+	/**
+	 * Set status "Idle" to status label action and "Play" to button.
+	 */
+	private void setStatudIdle() {
+		actionButton = (Button) findViewById(R.id.actionButton);
+		trackStatus = (TextView) findViewById(R.id.statusLabel);
+		trackStatus.setText("Status: Idle");
+		actionButton.setText("Play");
 	}
 }

@@ -57,7 +57,8 @@ public class AudioPlayer extends Activity {
 		mPlayer.setVolume(currVolume, currVolume);
 
 	}
-//adjustVolume !!
+
+	// adjustVolume !!
 	/**
 	 * Each call to higher the volume to 10%
 	 * 
