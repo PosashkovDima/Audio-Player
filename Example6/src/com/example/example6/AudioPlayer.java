@@ -1,7 +1,6 @@
 package com.example.example6;
 
 import android.app.Activity;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.view.View;
 
