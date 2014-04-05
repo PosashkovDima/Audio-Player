@@ -36,6 +36,8 @@ public class AudioPlayer extends Activity {
 
 	public void stopTrack() {
 		mPlayer.stop();
+		mPlayer.release();
+		mPlayer = null;
 	}
 
 	public boolean isPlaying() {
@@ -55,7 +57,8 @@ public class AudioPlayer extends Activity {
 		mPlayer.setVolume(currVolume, currVolume);
 
 	}
-//adjustVolume !!
+
+	// adjustVolume !!
 	/**
 	 * Each call to higher the volume to 10%
 	 * 
