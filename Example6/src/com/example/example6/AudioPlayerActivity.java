@@ -4,13 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class AudioPlayerActivity extends Activity {
-	private AudioPlayer player;
+	private AudioPlayer audioPlayer;
 	private AudioManager audioManager;
 	private Button actionButton;
 	private TextView trackStatus;
@@ -25,12 +26,18 @@ public class AudioPlayerActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		actionButton = (Button) findViewById(R.id.actionButton);
 		trackStatus = (TextView) findViewById(R.id.statusLabel);
-
-		player = new AudioPlayer(MediaPlayer.create(getApplicationContext(),
-				R.raw.song));
+		MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),
+				R.raw.song);
+		audioPlayer = new AudioPlayer(mediaPlayer);
 
 		audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 		savedInstanceStateAnalyzes(savedInstanceState);
+
+		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+			public void onCompletion(MediaPlayer arg0) {
+				setStatusIdle();
+			}
+		});
 	}
 
 	/**
@@ -41,15 +48,15 @@ public class AudioPlayerActivity extends Activity {
 	 */
 	private void savedInstanceStateAnalyzes(Bundle savedInstanceState) {
 		if (savedInstanceState != null) {
-			player.setCurrentPosition(savedInstanceState
+			audioPlayer.setCurrentPosition(savedInstanceState
 					.getInt(CURRENT_POSITION_KEY));
 			if (savedInstanceState.getBoolean(WAS_PLAYING_KEY)) {
-				player.playTrack();
+				audioPlayer.playTrack();
 				setStatusPlaying();
 			} else if (savedInstanceState.getBoolean(WAS_PAUSED_KEY)) {
 				setStatusPaused();
 			} else {
-				setStatudIdle();
+				setStatusIdle();
 			}
 		}
 	}
@@ -61,11 +68,11 @@ public class AudioPlayerActivity extends Activity {
 	 * @param v
 	 */
 	public void actionButtonOnClick(View v) {
-		if (!player.isPlaying()) {
-			player.playTrack();
+		if (!audioPlayer.isPlaying()) {
+			audioPlayer.playTrack();
 			setStatusPlaying();
 		} else {
-			player.pauseTrack();
+			audioPlayer.pauseTrack();
 			setStatusPaused();
 			wasPaused = true;
 		}
@@ -106,7 +113,7 @@ public class AudioPlayerActivity extends Activity {
 	/**
 	 * Set status "Idle" to status label action and "Play" to button.
 	 */
-	private void setStatudIdle() {
+	private void setStatusIdle() {
 		trackStatus.setText("Status: Idle");
 		actionButton.setText("Play");
 	}
@@ -114,15 +121,15 @@ public class AudioPlayerActivity extends Activity {
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
 		savedInstanceState.putInt(CURRENT_POSITION_KEY,
-				player.getCurrentPosition());
-		savedInstanceState.putBoolean(WAS_PLAYING_KEY, player.isPlaying());
+				audioPlayer.getCurrentPosition());
+		savedInstanceState.putBoolean(WAS_PLAYING_KEY, audioPlayer.isPlaying());
 		savedInstanceState.putBoolean(WAS_PAUSED_KEY, wasPaused);
 		super.onSaveInstanceState(savedInstanceState);
 	}
 
 	@Override
 	protected void onDestroy() {
-		player.stopTrack();
+		audioPlayer.stopTrack();
 		super.onDestroy();
 	}
 
