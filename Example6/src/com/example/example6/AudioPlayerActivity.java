@@ -64,10 +64,10 @@ public class AudioPlayerActivity extends Activity {
 		if (!player.isPlaying()) {
 			player.playTrack();
 			setStatusPlaying();
-			wasPaused = true;
 		} else {
 			player.pauseTrack();
 			setStatusPaused();
+			wasPaused = true;
 		}
 	}
 
@@ -113,7 +113,8 @@ public class AudioPlayerActivity extends Activity {
 
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
-		savedInstanceState.putInt(CURRENT_POSITION_KEY, player.getCurrentPosition());
+		savedInstanceState.putInt(CURRENT_POSITION_KEY,
+				player.getCurrentPosition());
 		savedInstanceState.putBoolean(WAS_PLAYING_KEY, player.isPlaying());
 		savedInstanceState.putBoolean(WAS_PAUSED_KEY, wasPaused);
 		super.onSaveInstanceState(savedInstanceState);
