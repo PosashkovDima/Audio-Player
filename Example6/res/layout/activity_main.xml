@@ -35,4 +35,23 @@
         android:text="@string/butPlay"
         android:width="200dp" />
 
+    <Button
+        android:id="@+id/increase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/actionButton"
+        android:layout_alignRight="@+id/actionButton"
+        android:onClick="increaseButtonOnClick"
+        android:text="increase" />
+
+    <Button
+        android:id="@+id/decrease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/increase"
+        android:layout_alignBottom="@+id/increase"
+        android:layout_alignLeft="@+id/actionButton" 
+        android:onClick="decreaseButtonOnClick"
+        android:text="decrease" />
+
 </RelativeLayout>
