@@ -1,6 +1,7 @@
 package com.example.example6;
 
 import android.app.Activity;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.view.View;
 
@@ -36,10 +37,11 @@ public class AudioPlayer extends Activity {
 
 	public void stopTrack() {
 		mPlayer.stop();
+		mPlayer.release();
+		mPlayer = null;
 	}
 
 	public boolean isPlaying() {
-
 		return mPlayer.isPlaying();
 	}
 
