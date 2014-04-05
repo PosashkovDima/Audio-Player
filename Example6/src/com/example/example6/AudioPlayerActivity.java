@@ -14,6 +14,7 @@ public class AudioPlayerActivity extends Activity {
 	private AudioPlayer audioPlayer;
 	private AudioManager audioManager;
 	private Button actionButton;
+	private MediaPlayer mediaPlayer;
 	private TextView trackStatus;
 	private boolean wasPaused = false;
 	private static final String CURRENT_POSITION_KEY = "currentPositionKey";
@@ -26,8 +27,7 @@ public class AudioPlayerActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		actionButton = (Button) findViewById(R.id.actionButton);
 		trackStatus = (TextView) findViewById(R.id.statusLabel);
-		MediaPlayer mediaPlayer = MediaPlayer.create(getApplicationContext(),
-				R.raw.song);
+		mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.song);
 		audioPlayer = new AudioPlayer(mediaPlayer);
 
 		audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
