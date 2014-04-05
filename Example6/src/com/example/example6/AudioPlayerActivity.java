@@ -24,7 +24,7 @@ public class AudioPlayerActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.audio_player_main);
 		actionButton = (Button) findViewById(R.id.actionButton);
 		trackStatus = (TextView) findViewById(R.id.statusLabel);
 		mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.song);

@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="80dp"
-        android:text="@string/trackNameDefault"
+        android:text="@string/track_name_default"
         android:textSize="30sp" />
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/trackName"
         android:layout_below="@id/trackName"
-        android:text="@string/trackStatusIdle"
+        android:text="@string/track_status_idle"
         android:textSize="20sp" />
 
     <Button
@@ -30,7 +30,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="80dp"
         android:onClick="actionButtonOnClick"
-        android:text="@string/butPlay"
+        android:text="@string/button_play"
         android:width="200dp" />
 
     <Button
@@ -40,7 +40,7 @@
         android:layout_alignRight="@+id/actionButton"
         android:layout_below="@+id/statusLabel"
         android:onClick="increaseButtonOnClick"
-        android:text="@string/increaseButton" />
+        android:text="@string/increase_volume" />
 
     <Button
         android:id="@+id/decrease"
@@ -49,6 +49,6 @@
         android:layout_alignLeft="@+id/actionButton"
         android:layout_below="@+id/statusLabel"
         android:onClick="decreaseButtonOnClick"
-        android:text="@string/decreaseButton" />
+        android:text="@string/decrease_volume" />
 
 </RelativeLayout>
