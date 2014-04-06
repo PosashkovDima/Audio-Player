@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     android:orientation="vertical" >
 
     <TextView
@@ -25,12 +26,14 @@
     <Button
         android:id="@+id/actionButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="30dp"
         android:layout_marginTop="80dp"
+        android:background="@drawable/button_style"
         android:onClick="actionButtonOnClick"
         android:text="@string/button_play"
+        android:textSize="20sp"
         android:width="200dp" />
 
     <Button
@@ -39,6 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/actionButton"
         android:layout_below="@+id/statusLabel"
+        android:background="@drawable/button_style"
         android:onClick="increaseButtonOnClick"
         android:text="@string/increase_volume" />
 
@@ -48,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/actionButton"
         android:layout_below="@+id/statusLabel"
+        android:background="@drawable/button_style"
         android:onClick="decreaseButtonOnClick"
         android:text="@string/decrease_volume" />
 

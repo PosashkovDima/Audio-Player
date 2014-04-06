@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     tools:context="com.example.example6.AudioPlayerActivity"
     tools:ignore="MergeRootFrame" >
 
@@ -27,20 +27,24 @@
     <Button
         android:id="@+id/actionButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/button_style"
         android:onClick="actionButtonOnClick"
         android:text="@string/button_play"
+        android:textSize="20sp"
         android:width="200dp" />
 
     <Button
         android:id="@+id/increase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/actionButton"
-        android:layout_alignRight="@+id/actionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@id/actionButton"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/button_style"
         android:onClick="increaseButtonOnClick"
         android:text="@string/increase_volume" />
 
@@ -48,8 +52,9 @@
         android:id="@+id/decrease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/actionButton"
-        android:layout_alignLeft="@+id/actionButton"
+        android:layout_alignBaseline="@id/increase"
+        android:layout_alignLeft="@id/actionButton"
+        android:background="@drawable/button_style"
         android:onClick="decreaseButtonOnClick"
         android:text="@string/decrease_volume" />
 
