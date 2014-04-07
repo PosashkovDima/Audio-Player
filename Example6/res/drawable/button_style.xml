@@ -6,14 +6,12 @@
 
             <corners android:bottomLeftRadius="10dip" android:topLeftRadius="10dip" />
 
-            <padding android:bottom="7dip" android:left="20dip" android:right="20dip" android:top="7dip" />
         </shape></item>
     <item><shape>
             <gradient android:angle="90.0" android:endColor="#99CCFF" android:startColor="#99CCFF" android:type="linear" />
 
             <corners android:bottomLeftRadius="10dip" android:topLeftRadius="10dip" />
 
-            <padding android:bottom="7dip" android:left="20dip" android:right="20dip" android:top="7dip" />
         </shape></item>
 
 </selector>

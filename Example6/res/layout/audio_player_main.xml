@@ -39,8 +39,8 @@
 
     <Button
         android:id="@+id/increase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@id/actionButton"
         android:layout_marginBottom="30dp"
@@ -50,8 +50,8 @@
 
     <Button
         android:id="@+id/decrease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
         android:layout_alignBaseline="@id/increase"
         android:layout_alignLeft="@id/actionButton"
         android:background="@drawable/button_style"

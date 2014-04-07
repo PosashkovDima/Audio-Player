@@ -38,20 +38,20 @@
 
     <Button
         android:id="@+id/increase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/actionButton"
-        android:layout_below="@+id/statusLabel"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_alignRight="@id/actionButton"
+        android:layout_below="@id/statusLabel"
         android:background="@drawable/button_style"
         android:onClick="increaseButtonOnClick"
         android:text="@string/increase_volume" />
 
     <Button
         android:id="@+id/decrease"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/actionButton"
-        android:layout_below="@+id/statusLabel"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@id/actionButton"
+        android:layout_below="@id/statusLabel"
         android:background="@drawable/button_style"
         android:onClick="decreaseButtonOnClick"
         android:text="@string/decrease_volume" />
