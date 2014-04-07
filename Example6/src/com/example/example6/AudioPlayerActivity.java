@@ -31,7 +31,7 @@ public class AudioPlayerActivity extends Activity {
 		audioPlayer = new AudioPlayer(mediaPlayer);
 
 		audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-		savedInstanceStateAnalyzes(savedInstanceState);
+		restoreInstanceState(savedInstanceState);
 
 		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 			public void onCompletion(MediaPlayer arg0) {
@@ -46,7 +46,7 @@ public class AudioPlayerActivity extends Activity {
 	 * @param savedInstanceState
 	 *            type of Bundle
 	 */
-	private void savedInstanceStateAnalyzes(Bundle savedInstanceState) {
+	private void restoreInstanceState(Bundle savedInstanceState) {
 		if (savedInstanceState != null) {
 			audioPlayer.setCurrentPosition(savedInstanceState
 					.getInt(CURRENT_POSITION_KEY));
@@ -61,12 +61,6 @@ public class AudioPlayerActivity extends Activity {
 		}
 	}
 
-	/**
-	 * Called if click on actionButton. Calls setTrackStatus() and play or pause
-	 * track.
-	 * 
-	 * @param v
-	 */
 	public void actionButtonOnClick(View v) {
 		if (!audioPlayer.isPlaying()) {
 			audioPlayer.playTrack();
@@ -79,7 +73,7 @@ public class AudioPlayerActivity extends Activity {
 	}
 
 	/**
-	 * Increase button if clicked on increaseButton
+	 * Increase volume if clicked on increaseButton
 	 */
 	public void increaseButtonOnClick(View v) {
 		audioManager.adjustVolume(AudioManager.ADJUST_RAISE,
@@ -87,32 +81,23 @@ public class AudioPlayerActivity extends Activity {
 	}
 
 	/**
-	 * Decrease button if clicked on decreaseButton
+	 * Decrease volume if clicked on decreaseButton
 	 */
 	public void decreaseButtonOnClick(View v) {
 		audioManager.adjustVolume(AudioManager.ADJUST_LOWER,
 				AudioManager.FLAG_SHOW_UI);
 	}
 
-	/**
-	 * Set status "Paused" to status label action and "Play" to button.
-	 */
 	public void setStatusPaused() {
 		trackStatus.setText("Status: Paused");
 		actionButton.setText("Play");
 	}
 
-	/**
-	 * Set status "Playing" to status label action and "Pause" to button.
-	 */
 	private void setStatusPlaying() {
 		trackStatus.setText("Status: Playing");
 		actionButton.setText("Pause");
 	}
 
-	/**
-	 * Set status "Idle" to status label action and "Play" to button.
-	 */
 	private void setStatusIdle() {
 		trackStatus.setText("Status: Idle");
 		actionButton.setText("Play");

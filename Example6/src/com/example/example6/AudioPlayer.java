@@ -12,20 +12,10 @@ public class AudioPlayer extends Activity {
 		this.mPlayer = mPlayer;
 	}
 
-	/**
-	 * Save current position of track.
-	 * 
-	 * @param timePassed
-	 */
 	public void setCurrentPosition(int timePassed) {
 		this.currentPosition = timePassed;
 	}
 
-	/**
-	 * Get current position of track.
-	 * 
-	 * @return current position type of int
-	 */
 	public int getCurrentPosition() {
 		return mPlayer.getCurrentPosition();
 	}
