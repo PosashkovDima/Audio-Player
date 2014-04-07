@@ -1,4 +1,6 @@
-package com.example.example6;
+package com.example.audioplayer;
+
+import com.example.example6.R;
 
 import android.app.Activity;
 import android.content.Context;

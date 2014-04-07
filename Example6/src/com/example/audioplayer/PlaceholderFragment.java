@@ -1,4 +1,6 @@
-package com.example.example6;
+package com.example.audioplayer;
+
+import com.example.example6.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

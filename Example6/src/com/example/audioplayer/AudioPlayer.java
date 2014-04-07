@@ -1,4 +1,4 @@
-package com.example.example6;
+package com.example.audioplayer;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
