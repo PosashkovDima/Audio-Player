@@ -36,6 +36,7 @@ public class AudioPlayerActivity extends Activity {
 		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 			public void onCompletion(MediaPlayer arg0) {
 				setStatusIdle();
+				audioPlayer.setCurrentPosition(0);
 			}
 		});
 	}
